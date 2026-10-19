@@ -1,0 +1,19 @@
+:root {
+	/* FONTS VARIABLES */
+	--font-display: sans-serif;
+	--font-body: serif;
+
+	--text-s: 1rem;
+	--text-m: 1.3rem;
+	--line-height: 1.2rem;
+
+	/* SPACES VARIABLES */
+	--space-s: 1rem;
+	--space-m: 1.5rem;
+
+	/* COLOR VARIABLES */
+	--color-bg: rgb(255, 249, 244);
+	--color-pr: rgb(236, 29, 34);
+	--color-ac: rgb(255,129,83);
+	--color-text: black;
+}
