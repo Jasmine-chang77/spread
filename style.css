@@ -3,12 +3,12 @@
 
 :root {
 	/* FONTS FAMILY VARIABLES */
-	--font-display: "ClashDisplay-Variable", sans-serif;
-	--font-body: "Albert Sans", sans-serif;
+	--font-display: "Albert Sans", sans-serif;
+	--font-body: "Sentient-Variable", serif;
 
 	font-family: var(--font-body);
 	font-size: var(--text-s);
-	font-weight: 400;
+	font-weight: 600;
 	font-style: normal;
 	line-height: 1.5rem;
 
@@ -78,7 +78,7 @@ hgroup {
 	details {
 		align-self: center;
 		position: relative;
-		min-width: 40ch;
+		min-width: 50ch;
 		margin-block-start: var(--space-m);
 
 		summary {
@@ -90,7 +90,7 @@ hgroup {
 
 			border: 0.1rem solid var(--color-pr);
 			border-radius: 3rem;
-			margin-inline: 9rem;
+			margin-inline: 7rem;
 			padding-block: calc(var(--space-s)/2);
 
 			&:hover {
@@ -105,7 +105,11 @@ hgroup {
 			padding-inline: var(--space-s);
 			padding-block: var(--space-s);
 
-			font-size: calc(var(--text-s)*0.8);
+			font-size: var(--text-s);
+
+			strong {
+				font-weight: 600;
+			}
 		}
 	}
 
@@ -121,7 +125,7 @@ hgroup {
 		padding-inline-end: var(--space-s);
 
 		position: absolute;
-		inset-block-start: 30rem;
+		inset-block-start: 34rem;
 		inset-inline-end: calc(var(--space-s)*1.4);
 	}
 }
@@ -138,8 +142,6 @@ main {
   nav {
     grid-area: nav;
 
-	font-family: var(--font-display);
-	font-display: swap;
 	line-height: 2rem;
 	letter-spacing: 0.08rem;
 
@@ -152,12 +154,30 @@ main {
 	font-size: var(--text-m);
 	line-height: 2rem;
 
-	header, blockquote, ol {
+	h2 {
+		font-weight: 700;
+		padding-block-start: var(--space-m);
+
+		&::before {content: '/';}
+		&::after {content: '/';}
+	}
+
+	aside {
+		font-style: italic;
+		padding-block: var(--space-m);
+
+		&::before {content: '“';}
+		&::after {content: '”';}
+	}
+
+	blockquote, ol {
 		font-family: var(--font-display);
 		font-weight: 400;
 		font-display: swap;
 		font-style: normal;
+	}
 
+	blockquote, ol {
 		padding: var(--space-m);
 	}
 
