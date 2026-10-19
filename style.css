@@ -1,8 +1,15 @@
+@import url('clash-display.css');
+
 :root {
 	/* FONTS VARIABLES */
-	--font-display: sans-serif;
-	--font-body: serif;
+	--font-display: "ClashDisplay-Variable", sans-serif;
+	--font-body: "Albert Sans", sans-serif;
 
+	font-style: var(--font-body);
+	font-weight: 400;
+	font-style: normal;
+
+	/* TEXT SIZE VARIABLES */
 	--text-s: 1rem;
 	--text-m: 1.3rem;
 	--line-height: 1.2rem;
@@ -16,4 +23,58 @@
 	--color-pr: rgb(236, 29, 34);
 	--color-ac: rgb(255,129,83);
 	--color-text: black;
+
+	background-color: var(--color-bg);
+}
+
+hgroup {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: var(--space-m);
+	min-block-size: 95vh;
+
+
+	.author-info {
+		align-self: center;
+		position: relative;
+		min-width: 45ch;
+		margin-block-start: var(--space-m);
+
+
+		summary {
+			color: var(--color-pr);
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			border: 0.1rem solid var(--color-pr);
+			border-radius: 3rem;
+			margin-inline: 9rem;
+			padding-block: calc(var(--space-s)/2);
+		}
+
+		p {
+			position: absolute;
+			padding-inline: var(--space-s);
+			padding-block: var(--space-s);
+		}
+	}
+
+	h1 {
+		text-transform: uppercase;
+		font-family: var(--font-display);
+		font-weight: 400;
+		font-display: swap;
+		font-style: normal;
+		font-size: 4rem;
+		line-height: 1;
+		text-align:right;
+
+		position: absolute;
+		inset-block-start: 32rem;
+	}
+
+
+
 }
