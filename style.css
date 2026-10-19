@@ -1,4 +1,4 @@
-@import url('clash-display.css');
+@import url('sentient.css');
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
@@ -90,7 +90,7 @@ hgroup {
 
 			border: 0.1rem solid var(--color-pr);
 			border-radius: 3rem;
-			margin-inline: 7rem;
+			margin-inline: 10rem;
 			padding-block: calc(var(--space-s)/2);
 
 			&:hover {
@@ -155,7 +155,7 @@ main {
 	line-height: 2rem;
 
 	h2 {
-		font-weight: 700;
+		font-weight: 600;
 		padding-block-start: var(--space-m);
 
 		&::before {content: '/';}
