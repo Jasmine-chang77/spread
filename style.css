@@ -6,13 +6,6 @@
 	--font-display: "Albert Sans", sans-serif;
 	--font-body: "Sentient-Variable", serif;
 
-	font-family: var(--font-body);
-	font-size: var(--text-s);
-	font-weight: 400;
-	font-style: normal;
-	line-height: 1.5rem;
-
-
 	/* TEXT SIZE VARIABLES */
 	--text-s: 1rem;
 	--text-m: 1.3rem;
@@ -35,6 +28,11 @@
 }
 
 body {
+	font-family: var(--font-body);
+	font-size: var(--text-s);
+	font-weight: 400;
+	font-style: normal;
+	line-height: 1.5rem;
 	margin-inline: calc(var(--space-m)*2);
 
 	div {
