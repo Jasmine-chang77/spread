@@ -6,29 +6,65 @@
 	--font-display: "ClashDisplay-Variable", sans-serif;
 	--font-body: "Albert Sans", sans-serif;
 
-	font-style: var(--font-body);
+	font-family: var(--font-body);
+	font-size: var(--text-s);
 	font-weight: 400;
 	font-style: normal;
+	line-height: 1.5rem;
+
 
 	/* TEXT SIZE VARIABLES */
 	--text-s: 1rem;
 	--text-m: 1.3rem;
-	--line-height: 1.2rem;
 
 	/* SPACES VARIABLES */
 	--space-s: 1rem;
 	--space-m: 1.5rem;
 
 	/* GIRD VARIABLES */
-	--grid: 1fr
+	--grid: 1fr;
 
 	/* COLOR VARIABLES */
 	--color-bg: rgb(255, 249, 244);
 	--color-pr: rgb(236, 29, 34);
-	--color-ac: rgb(255,129,83);
+	--color-sc: rgb(255,129, 83);
 	--color-text: black;
+	--color-ac: white;
 
 	background-color: var(--color-bg);
+}
+
+body {
+	margin-inline: calc(var(--space-m)*2);
+
+	div {
+		position: fixed;
+		display: flex;
+		height: 100vh;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		font-family: var(--font-display);
+		text-transform: uppercase;
+		letter-spacing: 0.1rem;
+	}
+
+	.sidebar-left {
+		left: 0; /* this is default but it is easier to undersatnd. */
+		background: var(--color-pr);
+		color: var(--color-ac);
+		writing-mode: vertical-lr;
+	}
+
+	.sidebar-right {
+		right: 0;
+
+		background: var(--color-pr);
+		color: var(--color-ac);
+		writing-mode: vertical-rl;
+		transform: rotate(180deg);
+	}
 }
 
 hgroup {
@@ -42,7 +78,7 @@ hgroup {
 	details {
 		align-self: center;
 		position: relative;
-		min-width: 45ch;
+		min-width: 40ch;
 		margin-block-start: var(--space-m);
 
 		summary {
@@ -51,32 +87,42 @@ hgroup {
 			justify-content: center;
 			align-items: center;
 			cursor: pointer;
+
 			border: 0.1rem solid var(--color-pr);
 			border-radius: 3rem;
 			margin-inline: 9rem;
 			padding-block: calc(var(--space-s)/2);
+
+			&:hover {
+				background-color: var(--color-sc);
+				color: var(--color-ac);
+				border-color: var(--color-sc);
+			}
 		}
 
 		p {
 			position: absolute;
 			padding-inline: var(--space-s);
 			padding-block: var(--space-s);
+
+			font-size: calc(var(--text-s)*0.8);
 		}
 	}
 
 	h1 {
 		text-transform: uppercase;
 		font-family: var(--font-display);
-		font-weight: 400;
 		font-display: swap;
-		font-style: normal;
 		font-size: 4rem;
+		font-weight: 550;
+		color: var(--color-pr);
 		line-height: 1;
 		text-align: right;
 		padding-inline-end: var(--space-s);
 
 		position: absolute;
-		inset-block-start: 32rem;
+		inset-block-start: 30rem;
+		inset-inline-end: calc(var(--space-s)*1.4);
 	}
 }
 
@@ -93,25 +139,37 @@ main {
     grid-area: nav;
 
 	font-family: var(--font-display);
-	font-weight: 400;
 	font-display: swap;
-	font-style: normal;
+	line-height: 2rem;
+	letter-spacing: 0.08rem;
+
+	color: var(--color-pr);
 
   }
 
   article {
     grid-area: copy;
+	font-size: var(--text-m);
+	line-height: 2rem;
 
 	header, blockquote, ol {
 		font-family: var(--font-display);
 		font-weight: 400;
 		font-display: swap;
 		font-style: normal;
+
+		padding: var(--space-m);
+	}
+
+	details p {
+		font-size: var(--text-s);
+		line-height: 1.5rem;
 	}
   }
 
   footer {
     grid-area: footer;
+	padding-block: var(--space-m);
   }
 }
 
