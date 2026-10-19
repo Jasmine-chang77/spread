@@ -74,7 +74,25 @@ hgroup {
 		position: absolute;
 		inset-block-start: 32rem;
 	}
+}
 
+main {
+	display: grid;
+	gap: var(--space-m);
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-areas:
+		'nav copy copy'
+		'footer footer footer';
 
+	nav {
+		grid-area: nav;
+	}
 
+	article {
+		grid-area: copy;
+	}
+
+	footer {
+		grid-area: footer;
+	}
 }
