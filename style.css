@@ -1,7 +1,8 @@
 @import url('clash-display.css');
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-	/* FONTS VARIABLES */
+	/* FONTS FAMILY VARIABLES */
 	--font-display: "ClashDisplay-Variable", sans-serif;
 	--font-body: "Albert Sans", sans-serif;
 
@@ -17,6 +18,9 @@
 	/* SPACES VARIABLES */
 	--space-s: 1rem;
 	--space-m: 1.5rem;
+
+	/* GIRD VARIABLES */
+	--grid: 1fr
 
 	/* COLOR VARIABLES */
 	--color-bg: rgb(255, 249, 244);
@@ -35,12 +39,11 @@ hgroup {
 	min-block-size: 95vh;
 
 
-	.author-info {
+	details {
 		align-self: center;
 		position: relative;
 		min-width: 45ch;
 		margin-block-start: var(--space-m);
-
 
 		summary {
 			color: var(--color-pr);
@@ -69,7 +72,8 @@ hgroup {
 		font-style: normal;
 		font-size: 4rem;
 		line-height: 1;
-		text-align:right;
+		text-align: right;
+		padding-inline-end: var(--space-s);
 
 		position: absolute;
 		inset-block-start: 32rem;
@@ -78,21 +82,44 @@ hgroup {
 
 main {
 	display: grid;
-	gap: var(--space-m);
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: 1fr;
 	grid-template-areas:
-		'nav copy copy'
-		'footer footer footer';
+		"nav"
+		"copy"
+		"footer";
+	gap: var(--space-m);
 
-	nav {
-		grid-area: nav;
+  nav {
+    grid-area: nav;
+
+	font-family: var(--font-display);
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+
+  }
+
+  article {
+    grid-area: copy;
+
+	header, blockquote, ol {
+		font-family: var(--font-display);
+		font-weight: 400;
+		font-display: swap;
+		font-style: normal;
 	}
+  }
 
-	article {
-		grid-area: copy;
-	}
+  footer {
+    grid-area: footer;
+  }
+}
 
-	footer {
-		grid-area: footer;
+@media (width > 500px) {
+	main {
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-areas:
+			'nav copy copy'
+			'footer footer footer';
 	}
 }
