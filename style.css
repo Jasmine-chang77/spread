@@ -24,6 +24,7 @@
 	--color-pr: rgb(236, 29, 34);
 	--color-sc: rgb(255,129, 83);
 	--color-text: black;
+	--color-footer: rgb(128, 125, 122);
 	--color-ac: white;
 
 	background-color: var(--color-bg);
@@ -161,7 +162,7 @@ main {
 
   article {
     grid-area: copy;
-	font-size: var(--text-m);
+	font-size: calc(var(--text-s)*1.1);
 	line-height: 2rem;
 
 	h2 {
@@ -218,7 +219,7 @@ main {
 
 	blockquote {
 		border-inline-start: 0.2rem solid var(--color-pr);
-		padding-inline: var(--space-m);
+		padding-inline-start: var(--space-m);
 
 		p + p, dd {
 			margin-block-start: calc(var(--space-s)/2);
@@ -245,6 +246,7 @@ main {
 
 	.expressive-moment {
 		display: flex;
+		flex-wrap: wrap;
 		flex-direction: column;
 		gap: calc(var(--space-s)*1.6);
 
@@ -311,7 +313,12 @@ main {
 
 		P {
 			font-size: var(--text-s);
+			color: var(--color-footer);
+
 			line-height: 1.5rem;
+			overflow-wrap: anywhere;
+			/* The long URL forcing the Appendix wider than its available space. */
+			/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/overflow-wrap */
 		}
 
 	}
@@ -319,6 +326,9 @@ main {
   }
 
   footer {
+	font-size: calc(var(--text-s)*0.8);
+	color: var(--color-footer);
+
     grid-area: footer;
 	padding-block: var(--space-m);
   }
