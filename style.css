@@ -50,6 +50,7 @@ body {
 
 	.sidebar-left {
 		left: 0; /* this is default but it is easier to undersatnd. */
+
 		background: var(--color-pr);
 		color: var(--color-ac);
 		writing-mode: vertical-lr;
@@ -66,65 +67,74 @@ body {
 }
 
 hgroup {
+
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
+	justify-content: center;
 	gap: var(--space-m);
-	min-block-size: 95vh;
-
+	min-block-size: 95svh;
+	position: relative;
 
 	details {
-		align-self: center;
-		position: relative;
-		min-width: 50ch;
-		margin-block-start: var(--space-m);
+		position: absolute;
+		inset-block-start: var(--space-m);
+		inset-inline: 0;
 
 		summary {
 			color: var(--color-pr);
 			text-align: center;
-			justify-content: center;
-			align-items: center;
 			cursor: pointer;
 
 			border: 0.1rem solid var(--color-pr);
 			border-radius: 3rem;
-			margin-inline: 10rem;
-			padding-block: calc(var(--space-s)/2);
+			padding-block: calc(var(--space-s) / 2);
+			padding-inline: var(--space-s);
+			margin-inline: auto;
+			width: fit-content;
+
+			/* [] selects elements based on their html attributes. */
+			/* https://typography-interaction-2627.github.io/topic/css/#specific-attributes-selectorattribute */
+			/* : selects elements based on their state, position, or interaction. */
+			/* https://typography-interaction-2627.github.io/topic/css/#pseudo-classes-selectorstate-selectorinstance */
 
 			&:hover {
 				background-color: var(--color-sc);
 				color: var(--color-ac);
 				border-color: var(--color-sc);
 			}
+
+			[open] & {
+				background-color: var(--color-pr);
+				color: var(--color-bg);
+				border-color: var(--color-pr);
+			}
 		}
 
-		p {
-			position: absolute;
-			padding-inline: var(--space-s);
-			padding-block: var(--space-s);
+	}
 
-			font-size: var(--text-s);
+	p {
+		position: absolute;
+		inset-block-start: auto; /* Lets the browser decide the vertical position instead of using a fixed value, making it easier to adapt to different screen sizes. */
+		inset-inline: 0;
 
-			strong {
-				font-weight: 600;
-			}
+		background-color: var(--color-bg);
+		padding: var(--space-s);
+		font-size: var(--text-s);
+
+		strong {
+			font-weight: 600;
 		}
 	}
 
 	h1 {
 		text-transform: uppercase;
 		font-family: var(--font-display);
-		font-display: swap;
-		font-size: 4rem;
-		font-weight: 550;
+		font-size: calc(var(--text-s)*3);
+		font-weight: 700;
 		color: var(--color-pr);
 		line-height: 1;
 		text-align: right;
 		padding-inline-end: var(--space-s);
-
-		position: absolute;
-		inset-block-start: 34rem;
-		inset-inline-end: calc(var(--space-s)*1.4);
 	}
 }
 
@@ -160,6 +170,10 @@ main {
 		&::after {content: '/';}
 	}
 
+	p + p, blockquote + p {
+		margin-block-start: var(--space-m);
+	}
+
 	aside {
 		font-style: italic;
 		padding-block: var(--space-m);
@@ -173,16 +187,68 @@ main {
 		font-weight: 400;
 		font-display: swap;
 		font-style: normal;
+
+		margin-block-start: var(--space-m);
 	}
 
-	blockquote, ol {
-		padding: var(--space-m);
+	blockquote {
+		border-inline-start: 0.2rem solid var(--color-pr);
+		padding-inline: var(--space-m);
+
+		p + p, dd {
+			margin-block-start: calc(var(--space-s)/2);
+		}
+
+		p, dt {
+			font-size: calc(var(--text-s)*1.3);
+			line-height: 1.8rem;
+			color: var(--color-sc);
+		}
+
+		strong, dd {
+			text-transform: uppercase;
+			font-size: calc(var(--text-s)*2.4);
+			font-weight: 700;
+			line-height: 2.4rem;
+			color: var(--color-pr);
+		}
+
+		dd + dt {
+			margin-block-start: calc(var(--space-s)*3.2);
+		}
 	}
 
-	details p {
-		font-size: var(--text-s);
-		line-height: 1.5rem;
+	.expressive-moment {
+		display: flex;
+		flex-direction: column;
+		gap: calc(var(--space-s)*1.6);
+
+
+		:first-child, :last-child {
+			text-transform: uppercase;
+			font-size: calc(var(--text-s)*2.4);
+			font-weight: 700;
+			line-height: 2.4rem;
+			color: var(--color-pr);
+		}
+
+		:not(:first-child, :last-child) {
+			font-size: calc(var(--text-s)*1.3);
+			line-height: 1.8rem;
+			color: var(--color-sc);
+		}
 	}
+
+	details {
+		margin-block-start: var(--space-m);
+
+		P {
+			font-size: var(--text-s);
+			line-height: 1.5rem;
+		}
+
+	}
+
   }
 
   footer {
