@@ -237,6 +237,48 @@ main {
 			line-height: 1.8rem;
 			color: var(--color-sc);
 		}
+
+		& >:nth-child(2), :nth-child(5) {
+			text-align: right;
+		}
+
+		& >:nth-child(3) {
+			text-align: center;
+		}
+
+		.mobile-break {
+			display: block;
+		}
+	}
+
+	.sm-expressive-moment {
+		li {
+			font-size: calc(var(--text-s)*1.3);
+			line-height: 1.8rem;
+			color: var(--color-sc);
+		}
+	}
+
+	.lg-expressive-moment {
+		li {
+			text-transform: uppercase;
+			font-size: calc(var(--text-s)*2.4);
+			font-weight: 700;
+			line-height: 2.6rem;
+			color: var(--color-pr);
+
+			padding-block-end: var(--space-m);
+		}
+	}
+
+	.last-expressive-moment {
+		li {
+			text-transform: uppercase;
+			font-size: calc(var(--text-s)*2.4);
+			font-weight: 700;
+			line-height: 2.6rem;
+			color: var(--color-pr);
+		}
 	}
 
 	details {
@@ -263,5 +305,10 @@ main {
 		grid-template-areas:
 			'nav copy copy'
 			'footer footer footer';
+
+		.expressive-moment {
+			.mobile-break {
+				display: none;
+			}
 	}
 }
