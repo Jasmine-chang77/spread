@@ -92,23 +92,10 @@ body {
 			display: inline;
 		}
 	}
-
-	/* HERO (Title + Author) */
-
-	/* body > header - the chapter headers inside article are not affected. */
-	& > header {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		min-block-size: calc(100svh - var(--space-s)*6);
-
-		@media (width > 650px) {
-			flex-direction: row;
-			align-items: center;
-		}
-	}
 }
 
+
+/* HERO (Title + Author) */
 body > header {
 	position: relative;
 	display: flex;
@@ -204,7 +191,7 @@ body > header {
 		text-align: right;
 
 		@media (width > 650px) {
-			font-size: clamp(calc(var(--text-s)*4)), 9vw, calc(var(--text-s)*8);
+			font-size: clamp(calc(var(--text-s)*4), 9vw, calc(var(--text-s)*8));
 		}
 	}
 }
