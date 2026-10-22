@@ -36,7 +36,59 @@ body {
 	font-weight: 400;
 	font-style: normal;
 	line-height: 1.5;
-	margin-inline: calc(var(--space-m)*1.8);
+	margin-inline: calc(var(--space-m)*1.5);
+	padding-block: calc(var(--space-s)*3);
+
+	@media (width > 650px) {
+		margin-inline: calc(var(--space-m)*3.4);
+	}
+
+	& > header > nav {
+		position: fixed;
+		inset-block-start: 0;
+		inset-inline: 0;
+
+		background-color: var(--color-pr);
+		font-family: var(--font-display);
+		font-size: calc(var(--text-s)*1.1);
+		padding-block: calc(var(--space-s)/2);
+	}
+
+	@media (width > 650px) {
+		font-size: calc(var(--text-s)*0.8);
+		padding-inline: calc(var(--space-m)*1.6);
+	}
+
+	ul {
+		display: flex;
+		justify-content: space-between;
+		gap: var(--space-s);
+	}
+
+	a {
+		color: var(--color-ac);
+		text-decoration: none;
+
+		@media (hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+
+		}
+	}
+
+	.nav-number {
+		font-weight: 700;
+	}
+
+	/* Using span - mobile shows only numbers and desktop shows the full titles. */
+	.nav-title {
+		display: none;
+
+		@media (width > 650px) {
+			display: inline;
+		}
+	}
 
 	div {
 		position: fixed;
