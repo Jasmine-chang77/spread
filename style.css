@@ -36,7 +36,7 @@ body {
 	font-weight: 400;
 	font-style: normal;
 	line-height: 1.5;
-	margin-inline: calc(var(--space-m)*2);
+	margin-inline: calc(var(--space-m)*1.8);
 
 	div {
 		position: fixed;
@@ -47,6 +47,7 @@ body {
 		justify-content: center;
 
 		font-family: var(--font-display);
+		font-size: calc(var(--text-s)*0.7);
 		text-transform: uppercase;
 		letter-spacing: 0.1rem;
 	}
