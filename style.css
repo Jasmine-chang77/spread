@@ -49,7 +49,7 @@ body {
 		inset-block-start: 0;
 		inset-inline: 0;
 
-		background-color: var(--color-pr);
+		background-color: var(--color-text);
 		font-family: var(--font-display);
 		font-size: calc(var(--text-s)*1.1);
 
@@ -355,7 +355,7 @@ main {
 	/* mobile:only top, on the right */
 	align-items: center;
 
-	background-color: var(--color-pr);
+	background-color: var(--color-text);
 	color: var(--color-ac);
 	font-family: var(--font-display);
 	font-size: calc(var(--text-s)*1.1);
