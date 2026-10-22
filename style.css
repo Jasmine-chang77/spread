@@ -190,6 +190,10 @@ body > header {
 		line-height: 1;
 		text-align: right;
 
+		em {
+			color: var(--color-text);
+		}
+
 		@media (width > 650px) {
 			font-size: clamp(calc(var(--text-s)*4), 9vw, calc(var(--text-s)*8));
 		}
