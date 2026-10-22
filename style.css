@@ -43,6 +43,7 @@ body {
 		margin-inline: calc(var(--space-m)*3.4);
 	}
 
+	/* TOP BAR - NAV */
 	& > header > nav {
 		position: fixed;
 		inset-block-start: 0;
@@ -51,7 +52,9 @@ body {
 		background-color: var(--color-pr);
 		font-family: var(--font-display);
 		font-size: calc(var(--text-s)*1.1);
+
 		padding-block: calc(var(--space-s)/2);
+		padding-inline: var(--space-s);
 	}
 
 	@media (width > 650px) {
@@ -90,35 +93,19 @@ body {
 		}
 	}
 
-	div {
-		position: fixed;
+	/* HERO (Title + Author) */
+
+	/* body > header - the chapter headers inside article are not affected. */
+	& > header {
+		position: relative;
 		display: flex;
-		height: 100vh;
 		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+		min-block-size: calc(100svh - var(--space-s)*6);
 
-		font-family: var(--font-display);
-		font-size: calc(var(--text-s)*0.7);
-		text-transform: uppercase;
-		letter-spacing: 0.1rem;
-	}
-
-	.sidebar-left {
-		left: 0; /* this is default but it is easier to undersatnd. */
-
-		background: var(--color-pr);
-		color: var(--color-ac);
-		writing-mode: vertical-lr;
-	}
-
-	.sidebar-right {
-		right: 0;
-
-		background: var(--color-pr);
-		color: var(--color-ac);
-		writing-mode: vertical-rl;
-		transform: rotate(180deg);
+		@media (width > 650px) {
+			flex-direction: row;
+			align-items: center;
+		}
 	}
 }
 
@@ -131,9 +118,11 @@ hgroup {
 	position: relative;
 
 	details {
-		position: absolute;
-		inset-block-start: var(--space-m);
-		inset-inline: 0;
+		margin-block-start: var(--space-m);
+
+		@media (width > 650px) {
+			margin-block-start: 0;
+		}
 
 		summary {
 			color: var(--color-pr);
@@ -142,10 +131,13 @@ hgroup {
 
 			border: 0.1rem solid var(--color-pr);
 			border-radius: 3rem;
+
 			padding-block: calc(var(--space-s) / 2);
 			padding-inline: var(--space-s);
+
 			margin-inline: auto;
-			width: fit-content;
+			/* centered on mobile */
+			inline-size: fit-content;
 
 			/* [] selects elements based on their html attributes. */
 			/* https://typography-interaction-2627.github.io/topic/css/#specific-attributes-selectorattribute */
@@ -180,23 +172,41 @@ hgroup {
 		font-size: var(--text-s);
 		line-height: 1.8;
 
+		@media (width > 650px) {
+			inset-inline-end: auto;
+			max-inline-size: 30rem;
+		}
+
 		strong {
 			font-weight: 600;
 		}
 	}
 
 	h1 {
+		/* auto margin push the title right, and center it vertically in the leftfovwe space. */
+		margin-block: auto;
+		margin-inline-start: auto;
+
+		inline-size: min-content;/* min-content makes the title as narrow as its longest word, so each word get its own line. */
+
 		text-transform: uppercase;
 		font-family: var(--font-display);
-		font-size: calc(var(--text-s)*3);
+		font-size: clamp(calc(var(--space-s)*1.1), 13vw, calc(var(--space-s)*4));
+		/* clamp scales the title with the screen width, between a minimum and a maximum size. */
+		/* https://typography-interaction-2627.github.io/topic/responsive/#clamp */
+
 		font-weight: 700;
 		color: var(--color-pr);
 		line-height: 1;
 		text-align: right;
-		padding-inline-end: var(--space-s);
+
+		@media (width > 650px) {
+			font-size: clamp(calc(var(--space-s)*4)), 9vw, calc(var(--space-s)*8);
+		}
 	}
 }
 
+/* MAIN CONTENT */
 main {
 	display: grid;
 	grid-template-columns: 1fr;
