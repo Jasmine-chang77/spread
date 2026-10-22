@@ -35,7 +35,7 @@ body {
 	font-size: var(--text-s);
 	font-weight: 400;
 	font-style: normal;
-	line-height: 1.5rem;
+	line-height: 1.5;
 	margin-inline: calc(var(--space-m)*2);
 
 	div {
@@ -70,7 +70,6 @@ body {
 }
 
 hgroup {
-
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -99,17 +98,20 @@ hgroup {
 			/* https://typography-interaction-2627.github.io/topic/css/#specific-attributes-selectorattribute */
 			/* : selects elements based on their state, position, or interaction. */
 			/* https://typography-interaction-2627.github.io/topic/css/#pseudo-classes-selectorstate-selectorinstance */
-
-			&:hover {
-				background-color: var(--color-sc);
-				color: var(--color-ac);
-				border-color: var(--color-sc);
-			}
-
 			[open] & {
 				background-color: var(--color-pr);
 				color: var(--color-bg);
 				border-color: var(--color-pr);
+			}
+
+			/* We are using (hover: hover) because hover depends on the device, not the screen width. */
+			/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover */
+			@media (hover: hover) {
+				&:hover {
+					background-color: var(--color-sc);
+					color: var(--color-ac);
+					border-color: var(--color-sc);
+				}
 			}
 		}
 
@@ -123,6 +125,7 @@ hgroup {
 		background-color: var(--color-bg);
 		padding: var(--space-s);
 		font-size: var(--text-s);
+		line-height: 1.8;
 
 		strong {
 			font-weight: 600;
@@ -150,200 +153,235 @@ main {
 		"footer";
 	gap: var(--space-m);
 
-  nav {
-    grid-area: nav;
-
-	line-height: 2rem;
-	letter-spacing: 0.08rem;
-
-	color: var(--color-pr);
-
-  }
-
-  article {
-    grid-area: copy;
-	font-size: calc(var(--text-s)*1.1);
-	line-height: 2rem;
-
-	h2 {
-		font-weight: 600;
-		padding-block-start: var(--space-m);
-
-		&::before {content: '/';}
-		&::after {content: '/';}
-	}
-
-	p + p, blockquote + p {
-		margin-block-start: var(--space-m);
-	}
-
-	aside {
-		display: flex;
-		align-items: center;
-		gap: var(--space-m);
-		margin-block: var(--space-m);
-
-		p {
-			flex: 1;
-			font-style: italic;
-			font-size: ;
-			line-height: ;
-		}
-
-		&::before, &::after {
-			color: var(--color-pr);
-			font-family: var(--font-qmark);
-			font-size: calc(var(--text-s)*4);
-			line-height: 1;
-		}
-
-		&::before {
-			content: '“';
-		}
-		&::after {
-			content: '”';
-		}
-
-
-
-	}
-
-	blockquote, ol {
-		font-family: var(--font-display);
-		font-weight: 400;
-		font-display: swap;
-		font-style: normal;
-
-		margin-block-start: var(--space-m);
-	}
-
-	blockquote {
-		border-inline-start: 0.2rem solid var(--color-pr);
-		padding-inline-start: var(--space-m);
-
-		p + p, dd {
-			margin-block-start: calc(var(--space-s)/2);
-		}
-
-		p, dt {
-			font-size: calc(var(--text-s)*1.3);
-			line-height: 1.8rem;
-			color: var(--color-sc);
-		}
-
-		strong, dd {
-			text-transform: uppercase;
-			font-size: calc(var(--text-s)*2.4);
-			font-weight: 700;
-			line-height: 2.4rem;
-			color: var(--color-pr);
-		}
-
-		dd + dt {
-			margin-block-start: calc(var(--space-s)*3.2);
-		}
-	}
-
-	.expressive-moment {
-		display: flex;
-		flex-wrap: wrap;
-		flex-direction: column;
-		gap: calc(var(--space-s)*1.6);
-
-
-		:first-child, :last-child {
-			text-transform: uppercase;
-			font-size: calc(var(--text-s)*2.4);
-			font-weight: 700;
-			line-height: 2.4rem;
-			color: var(--color-pr);
-		}
-
-		:not(:first-child, :last-child) {
-			font-size: calc(var(--text-s)*1.3);
-			line-height: 1.8rem;
-			color: var(--color-sc);
-		}
-
-		& >:nth-child(2), :nth-child(5) {
-			text-align: right;
-		}
-
-		& >:nth-child(3) {
-			text-align: center;
-		}
-
-		.mobile-break {
-			display: block;
-		}
-	}
-
-	.sm-expressive-moment {
-		li {
-			font-size: calc(var(--text-s)*1.3);
-			line-height: 1.8rem;
-			color: var(--color-sc);
-		}
-	}
-
-	.lg-expressive-moment {
-		li {
-			text-transform: uppercase;
-			font-size: calc(var(--text-s)*2.4);
-			font-weight: 700;
-			line-height: 2.6rem;
-			color: var(--color-pr);
-
-			padding-block-end: var(--space-m);
-		}
-	}
-
-	.last-expressive-moment {
-		li {
-			text-transform: uppercase;
-			font-size: calc(var(--text-s)*2.4);
-			font-weight: 700;
-			line-height: 2.6rem;
-			color: var(--color-pr);
-		}
-	}
-
-	details {
-		margin-block-start: var(--space-m);
-
-		P {
-			font-size: var(--text-s);
-			color: var(--color-footer);
-
-			line-height: 1.5rem;
-			overflow-wrap: anywhere;
-			/* The long URL forcing the Appendix wider than its available space. */
-			/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/overflow-wrap */
-		}
-
-	}
-
-  }
-
-  footer {
-	font-size: calc(var(--text-s)*0.8);
-	color: var(--color-footer);
-
-    grid-area: footer;
-	padding-block: var(--space-m);
-  }
-}
-
-@media (width > 500px) {
-	main {
+	@media (width > 650px) {
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-areas:
 			'nav copy copy'
 			'footer footer footer';
+	}
 
-		.expressive-moment {
-			.mobile-break {
-				display: none;
+
+	nav {
+		grid-area: nav;
+
+		line-height: 2;
+		letter-spacing: 0.08rem;
+
+		color: var(--color-pr);
+
+	}
+
+	article {
+		grid-area: copy;
+		font-size: calc(var(--text-s)*1.1);
+		line-height: 2;
+
+		h2 {
+			font-weight: 600;
+			padding-block-start: var(--space-m);
+
+			&::before {content: '/';}
+			&::after {content: '/';}
+		}
+
+		p + p, blockquote + p {
+			margin-block-start: var(--space-m);
+		}
+
+		a {
+			color: var(--color-sc);
+		}
+
+		aside {
+			display: flex;
+			align-items: center;
+			gap: var(--space-m);
+			margin-block: var(--space-m);
+
+			p {
+				flex: 1; /* Allows the element to grow and fill the remaining space in a flex container. */
+				font-style: italic;
+				font-size: var(--text-s);
 			}
+
+			&::before, &::after {
+				color: var(--color-pr);
+				font-family: var(--font-qmark);
+				font-size: calc(var(--text-s)*4);
+				line-height: 1;
+			}
+
+			&::before { content: '“'; }
+			&::after { content: '”'; }
+		}
+
+		blockquote, ol {
+			font-family: var(--font-display);
+			font-weight: 400;
+			font-display: swap;
+			font-style: normal;
+
+			margin-block-start: var(--space-m);
+		}
+
+		blockquote {
+			border-inline-start: 0.2rem solid var(--color-pr);
+			padding-inline-start: var(--space-m);
+
+			p + p, dd {
+				margin-block-start: calc(var(--space-s)/2);
+			}
+
+			p, dt {
+				font-size: calc(var(--text-s)*1.3);
+				line-height: 1.4;
+				color: var(--color-sc);
+			}
+
+			strong, dd {
+				text-transform: uppercase;
+				font-size: calc(var(--text-s)*2.4);
+				font-weight: 700;
+				line-height: 1.2;
+				color: var(--color-pr);
+			}
+
+			dd + dt {
+				margin-block-start: calc(var(--space-s)*3.2);
+			}
+		}
+
+		details {
+			margin-block-start: var(--space-m);
+
+			summary {
+				cursor: pointer;
+
+				&::after {
+					content: '▼';
+					margin-inline-start: calc(var(--space-s) / 2);
+				}
+
+				[open] & {
+					&::after { content: '▲'; }
+				}
+			}
+
+			p {
+				font-size: var(--text-s);
+				color: var(--color-footer);
+				line-height: 1.5;
+				overflow-wrap: anywhere;
+				/* The long URL forcing the Appendix wider than its available space. */
+				/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/overflow-wrap */
+			}
+		}
+	}
+
+	footer {
+		font-size: calc(var(--text-s)*0.8);
+		line-height: 1.8;
+		color: var(--color-footer);
+
+		grid-area: footer;
+		padding-block: var(--space-m);
+
+		a {
+			display: block;
+			color: var(--color-pr);
+			background-color: var(--color-bg);
+			padding-block: calc(var(--space-s) / 2);
+			padding-inline: var(--space-s);
+			inline-size: max-content;
+
+			border: 0.1rem solid var(--color-pr);
+			border-radius: 3rem;
+
+			position: fixed;
+			inset-block-end: calc(var(--space-s)*2);
+			inset-inline-end: calc(var(--space-s)*2);
+		}
+
+		& > :nth-child(2) {
+			padding-block-end: var(--space-s);
+			border-block-end: 0.1rem solid var(--color-footer);
+		}
+
+		& > :nth-child(3) {
+			padding-block-start: var(--space-s);
+		}
+
+	}
+}
+
+
+/* CLASS */
+.expressive-moment {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	gap: calc(var(--space-s)*1.6);
+
+
+	& > :first-child, & > :last-child {
+		text-transform: uppercase;
+		font-size: calc(var(--text-s)*2.4);
+		font-weight: 700;
+		line-height: 1.2;
+		color: var(--color-pr);
+	}
+
+	& > :not(:first-child, & > :last-child) {
+		font-size: calc(var(--text-s)*1.3);
+		line-height: 1.4;
+		color: var(--color-sc);
+	}
+
+	& > :nth-child(2), & > :nth-child(5) {
+		text-align: right;
+	}
+
+	& > :nth-child(3) {
+		text-align: center;
+	}
+
+		& > li > span {
+		font-size: calc(var(--text-s)*1.3);
+		line-height: 1.4;
+		color: var(--color-sc);
+		display: block;
+
+		@media (width > 650px) {
+			display: inline;
+		}
+	}
+}
+
+.sm-expressive-moment {
+	li {
+		font-size: calc(var(--text-s)*1.3);
+		line-height: 1.4;
+		color: var(--color-sc);
+	}
+}
+
+.lg-expressive-moment {
+	li {
+		text-transform: uppercase;
+		font-size: calc(var(--text-s)*2.4);
+		font-weight: 700;
+		line-height: 1.2;
+		color: var(--color-pr);
+		padding-block-end: calc(var(--space-s)*3.2);
+	}
+}
+
+.last-expressive-moment {
+	li {
+		text-transform: uppercase;
+		font-size: calc(var(--text-s)*2.4);
+		font-weight: 700;
+		line-height: 1.2;
+		color: var(--color-pr);
 	}
 }

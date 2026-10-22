@@ -7,7 +7,7 @@
 	</head>
 
 	<body>
-		<!-- <div> is appropriate for elements used mainly for layout or visual presnetation. Due to make sidebars on the inline edges, related to 'Framing concept'. -->
+		<!-- We are using div for the sidebars because they visually support the framing concept rather than providing separate content. -->
 		<div class="sidebar-left">
 			<p>Judgement</p>
 		</div>
@@ -44,6 +44,7 @@
 				<section>
 					<!-- <em> vs <strong> -->
 					<!-- Use <em> is used to change the meaning of a sentence. Use <strong> as representing "strong importance for its contents."-->
+					<!-- https://typography-interaction-2627.github.io/topic/html/#inline-elements -->
 
 					<blockquote>
 						<p>Judgment.</p>
@@ -76,7 +77,12 @@
 						<li>Is it beautiful?</li>
 						<li>Is it aesthetically pleasing?</li>
 						<li>Will people like it?</li>
-						<li>Will it move them?<br class="mobile-break">Or bore them?</li>
+						<li>
+							<!-- We are using span because we want to create the line break for the mobile layout, but stay in one-line for the desktop layout. -->
+							<!-- https://typography-interaction-2627.github.io/topic/html/#inline-whitespace -->
+							<span>Will it move them?</span>
+							<span>Or bore them?</span>
+						</li>
 						<li>Is it redundant?</li>
 						<li>Is it cliché?</li>
 					</ol>
@@ -166,9 +172,9 @@
 				<footer>
 					<p>Judgment and Beauty</p>
 					<p>Written by Yoon Soo Lee</p>
-
 					<p>Website designed and developed by Claire Ok & Jasmine Chang</p>
-					<p>Typography & Interaction · Fall 2026Parsons School of Design, The New School</p>
+					<p>Typography & Interaction · Fall 2026 · Parsons School of Design, The New School</p>
+					<a href="#top">Top</a>
 				</footer>
 			</main>
 
