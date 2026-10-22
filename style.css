@@ -109,13 +109,16 @@ body {
 	}
 }
 
-header {
+body > header {
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	gap: var(--space-m);
 	min-block-size: 95svh;
-	position: relative;
+
+	@media (width > 650px) {
+		flex-direction: row;
+		align-items: center;
+	}
 
 	details {
 		margin-block-start: var(--space-m);
