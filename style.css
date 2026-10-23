@@ -15,7 +15,9 @@
 	/* SPACES VARIABLES */
 	--space-s: 1rem;
 	--space-m: 1.5rem;
+	--space-l: 4rem;
 	--space-xl: 10rem;
+
 
 	/* GIRD VARIABLES */
 	--grid: 1fr;
@@ -39,7 +41,7 @@ body {
 	font-weight: 400;
 	font-style: normal;
 	line-height: 1.5;
-	margin-inline: calc(var(--space-m)*1.5);
+	margin-inline: calc(var(--space-s)*1.2);
 	padding-block: calc(var(--space-s)*3);
 
 	@media (width > 650px) {
@@ -105,20 +107,26 @@ body {
 dialog {
 	position: fixed;
 	inset: 0;
+
 	margin: auto;
 	inline-size: fit-content;
 	block-size: 20rem;
 	border-radius: 1rem;
 	max-inline-size: min(calc(var(--space-xl)*4), 90vw);
 	max-block-size: 80svh;
+
 	/* We looked at class agenda overflow section to learn how to create a scrollable container. */
 	/* https://typography-interaction-2627.github.io/topic/advanced-css/#overflow */
 	overflow-x: hidden;
 	overflow-y: auto;
+
 	padding: var(--space-m);
 	padding-block-start: 0;
+
+	font-size: var(--text-s);
 	background-color: var(--color-text);
 	color: var(--color-ac);
+
 	filter: drop-shadow(0 0.5em 0.2em rgb(from var(--color-text) r g b / 25%));
 
 	form {
@@ -228,10 +236,15 @@ main {
 		font-size: calc(var(--text-s)*1.1);
 		line-height: 2;
 
+		section {
+			padding-block-end: var(--space-xl);
+			hyphens: auto;
+		}
+
 		h2 {
 			font-weight: 600;
 			text-transform: uppercase;
-			padding-block-start: var(--space-m);
+			margin-block-end: var(--space-s);
 
 			&::before {content: '/';}
 			&::after {content: '/';}
@@ -327,9 +340,6 @@ main {
 				font-size: var(--text-s);
 				color: var(--color-footer);
 				line-height: 1.5;
-				overflow-wrap: anywhere;
-				/* The long URL forcing the Appendix wider than its available space. */
-				/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/overflow-wrap */
 			}
 		}
 	}
@@ -376,7 +386,6 @@ main {
 
 	@media (width > 650px) {
 		justify-content: space-between;
-		font-size: calc(var(--text-s)*0.8);
 		padding-inline: calc(var(--space-m)*1.6);
 	}
 
