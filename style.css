@@ -129,6 +129,10 @@ dialog {
 
 	filter: drop-shadow(0 0.5em 0.2em rgb(from var(--color-text) r g b / 25%));
 
+	&::backdrop {
+		background-color: var(--color-footer);
+	}
+
 	form {
 		position: sticky;
 		inset-block-start: 0;
