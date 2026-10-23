@@ -15,6 +15,7 @@
 	/* SPACES VARIABLES */
 	--space-s: 1rem;
 	--space-m: 1.5rem;
+	--space-xl: 10rem;
 
 	/* GIRD VARIABLES */
 	--grid: 1fr;
@@ -50,9 +51,12 @@ body {
 		position: fixed;
 		inset-block-start: 0;
 		inset-inline: 0;
+		z-index: 2;
+		/* We don't want the bar to cover our dialog, so we use z-index to tell who is the one on the top. */
+		/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/z-index */
 
 		background-color: var(--color-text);
-		font-family: var(--font-display);
+		font-family: var(--font-body);
 		font-size: calc(var(--text-s)*1.1);
 
 		padding-block: calc(var(--space-s)/2);
@@ -83,7 +87,9 @@ body {
 	}
 
 	.nav-number {
-		font-weight: 700;
+		@media (width > 650px) {
+			font-weight: 700;
+		}
 	}
 
 	/* Using span - mobile shows only numbers and desktop shows the full titles. */
@@ -96,62 +102,61 @@ body {
 	}
 }
 
+dialog {
+	position: fixed;
+	inset: 0;
+	margin: auto;
+	inline-size: fit-content;
+	block-size: 20rem;
+	border-radius: 1rem;
+	max-inline-size: min(calc(var(--space-xl)*4), 90vw);
+	max-block-size: 80svh;
+	/* We looked at class agenda overflow section to learn how to create a scrollable container. */
+	/* https://typography-interaction-2627.github.io/topic/advanced-css/#overflow */
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: var(--space-m);
+	padding-block-start: 0;
+	background-color: var(--color-text);
+	color: var(--color-ac);
+	filter: drop-shadow(0 0.5em 0.2em rgb(from var(--color-text) r g b / 25%));
+
+	form {
+		position: sticky;
+		inset-block-start: 0;
+		background-color: var(--color-text);
+		padding-block-start: var(--space-m);
+		padding-block-end: calc(var(--space-s)/2);
+
+		button {
+			display: block;
+			margin-inline-start: auto;
+			cursor: pointer;
+		}
+	}
+
+	p {
+		line-height: 1.8;
+	}
+
+	strong {
+		font-weight: 700;
+		letter-spacing: 0.05rem;
+		color: var(--color-sc);
+	}
+}
 
 /* HERO (Title + Author) */
 body > header {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	min-block-size: 95svh;
+	min-block-size: calc(100svh - var(--space-s)*12);
+	/* We use svh because it means "small viewport height" the screen height when the mobile browser's address bar is showing. Using it instead of vh means the peek works on phones too, without the address bar hiding the copy. */
 
 	@media (width > 650px) {
 		flex-direction: row;
 		align-items: center;
-	}
-
-	details {
-		margin-block-start: var(--space-m);
-
-		@media (width > 650px) {
-			margin-block-start: 0;
-		}
-
-		summary {
-			color: var(--color-pr);
-			text-align: center;
-			cursor: pointer;
-
-			border: 0.1rem solid var(--color-pr);
-			border-radius: 3rem;
-
-			padding-block: calc(var(--space-s) / 2);
-			padding-inline: var(--space-s);
-
-			margin-inline: auto;
-			/* centered on mobile */
-			inline-size: fit-content;
-
-			/* [] selects elements based on their html attributes. */
-			/* https://typography-interaction-2627.github.io/topic/css/#specific-attributes-selectorattribute */
-			/* : selects elements based on their state, position, or interaction. */
-			/* https://typography-interaction-2627.github.io/topic/css/#pseudo-classes-selectorstate-selectorinstance */
-			[open] & {
-				background-color: var(--color-pr);
-				color: var(--color-bg);
-				border-color: var(--color-pr);
-			}
-
-			/* We are using (hover: hover) because hover depends on the device, not the screen width. */
-			/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover */
-			@media (hover: hover) {
-				&:hover {
-					background-color: var(--color-sc);
-					color: var(--color-ac);
-					border-color: var(--color-sc);
-				}
-			}
-		}
-
 	}
 
 	p {
@@ -355,6 +360,7 @@ main {
 	position: fixed;
 	inset-block-end: 0;
 	inset-inline: 0;
+	z-index: 2;
 
 	display: flex;
 	justify-content: flex-end;
@@ -379,17 +385,6 @@ main {
 
 		@media (width > 650px) {
 			display: block;
-		}
-	}
-
-	a {
-		color: var(--color-ac);
-		text-decoration: none;
-
-		@media (hover: hover) {
-			&:hover {
-				text-decoration: underline;
-			}
 		}
 	}
 }
