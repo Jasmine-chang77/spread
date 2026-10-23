@@ -24,7 +24,9 @@
 	--color-pr: rgb(236, 29, 34);
 	--color-sc: rgb(255,129, 83);
 	--color-text: black;
-	--color-footer: rgb(128, 125, 122);
+	--color-footer: rgb(from var(--color-text) r g b / 50%);
+	/* relative color */
+	/* https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Colors/Using_relative_colors */
 	--color-ac: white;
 
 	background-color: var(--color-bg);
@@ -49,7 +51,7 @@ body {
 		inset-block-start: 0;
 		inset-inline: 0;
 
-		background-color: var(--color-pr);
+		background-color: var(--color-text);
 		font-family: var(--font-display);
 		font-size: calc(var(--text-s)*1.1);
 
@@ -359,7 +361,7 @@ main {
 	/* mobile:only top, on the right */
 	align-items: center;
 
-	background-color: var(--color-pr);
+	background-color: var(--color-text);
 	color: var(--color-ac);
 	font-family: var(--font-display);
 	font-size: calc(var(--text-s)*1.1);
