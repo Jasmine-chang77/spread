@@ -24,7 +24,9 @@
 	--color-pr: rgb(236, 29, 34);
 	--color-sc: rgb(255,129, 83);
 	--color-text: black;
-	--color-footer: rgb(128, 125, 122);
+	--color-footer: rgb(from var(--color-text) r g b / 50%);
+	/* relative color */
+	/* https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Colors/Using_relative_colors */
 	--color-ac: white;
 
 	background-color: var(--color-bg);
