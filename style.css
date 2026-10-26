@@ -63,43 +63,43 @@ body {
 
 		padding-block: calc(var(--space-s)/2);
 		padding-inline: var(--space-s);
-	}
 
-	@media (width > 650px) {
-		font-size: calc(var(--text-s)*0.8);
-		padding-inline: calc(var(--space-m)*1.6);
-	}
+		@media (width > 650px) {
+			font-size: calc(var(--text-s)*0.8);
+			padding-inline: calc(var(--space-m)*1.6);
+		}
 
-	ul {
-		display: flex;
-		justify-content: space-between;
-		gap: var(--space-s);
-	}
+		ul {
+			display: flex;
+			justify-content: space-between;
+			gap: var(--space-s);
+		}
 
-	a {
-		color: var(--color-ac);
-		text-decoration: none;
+		a {
+			color: var(--color-ac);
+			text-decoration: none;
 
-		@media (hover: hover) {
-			&:hover {
-				text-decoration: underline;
+			@media (hover: hover) {
+				&:hover {
+					text-decoration: underline;
+				}
+
 			}
-
 		}
-	}
 
-	.nav-number {
-		@media (width > 650px) {
-			font-weight: 700;
+		.nav-number {
+			@media (width > 650px) {
+				font-weight: 700;
+			}
 		}
-	}
 
-	/* Using span - mobile shows only numbers and desktop shows the full titles. */
-	.nav-title {
-		display: none;
+		/* Using span - mobile shows only numbers and desktop shows the full titles. */
+		.nav-title {
+			display: none;
 
-		@media (width > 650px) {
-			display: inline;
+			@media (width > 650px) {
+				display: inline;
+			}
 		}
 	}
 }
@@ -166,41 +166,32 @@ body > header {
 	min-block-size: calc(100svh - var(--space-s)*12);
 	/* We use svh because it means "small viewport height" the screen height when the mobile browser's address bar is showing. Using it instead of vh means the peek works on phones too, without the address bar hiding the copy. */
 
-	@media (width > 650px) {
-		flex-direction: row;
-		align-items: center;
-	}
+	justify-content: center;
+	align-items: flex-end;
+	overflow-x: clip;
 
 	p {
-		position: absolute;
-		inset-block-start: auto; /* Lets the browser decide the vertical position instead of using a fixed value, making it easier to adapt to different screen sizes. */
-		inset-inline: 0;
-
-		background-color: var(--color-bg);
-		padding: var(--space-s);
 		font-size: var(--text-s);
 		line-height: 1.8;
+		text-align: right;
+	}
+}
 
-		@media (width > 650px) {
-			inset-inline-end: auto;
-			max-inline-size: 30rem;
-		}
+.title-group {
+	position: relative;
 
-		strong {
-			font-weight: 600;
-		}
+	font-size: clamp(calc(var(--text-s)*4), 1rem + 11vw, calc(var(--text-s)*4));
+
+	@media (width > 650px) {
+		font-size: clamp(calc(var(--text-s)*4), 1rem + 7vw, calc(var(--text-s)*8));
 	}
 
 	h1 {
-		/* auto margin push the title right, and center it vertically in the leftfovwe space. */
-		margin-block: auto;
-		margin-inline-start: auto;
-
 		inline-size: min-content;/* min-content makes the title as narrow as its longest word, so each word get its own line. */
 
 		text-transform: uppercase;
 		font-family: var(--font-display);
-		font-size: clamp(calc(var(--text-s)*1.1), 13vw, calc(var(--text-s)*4));
+		font-size: 1em;
 		/* clamp scales the title with the screen width, between a minimum and a maximum size. */
 		/* https://typography-interaction-2627.github.io/topic/responsive/#clamp */
 
@@ -209,15 +200,44 @@ body > header {
 		line-height: 1;
 		text-align: right;
 
-		em {
+		span {
 			color: var(--color-text);
-		}
-
-		@media (width > 650px) {
-			font-size: clamp(calc(var(--text-s)*4), 9vw, calc(var(--text-s)*8));
 		}
 	}
 }
+
+.title-tags li {
+	position: absolute;
+	white-space: nowrap;
+
+	font-family: var(--font-display);
+	font-size: 0.16em;
+	padding-block: 0.3em;
+	padding-inline: 0.8em;
+	border-radius: 0.3em;
+
+	&:nth-child(odd) {
+		color: var(--color-pr);
+		border: 0.1em solid var(--color-pr);
+		background-color: var(--color-bg);
+	}
+
+	&:nth-child(even) {
+		color: var(--color-ac);
+		background-color: var(--color-text);
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+
+	/* We use % here, so they move with the title. */
+	/* https://typography-interaction-2627.github.io/topic/advanced-css/#okay-what-do-they-do */
+	&:nth-child(1) { inset-block-start: -14%; inset-inline-end: 12%; rotate: -12deg;}
+	&:nth-child(2) { inset-block-start: -6%; inset-inline-end: -6%; rotate: 8deg;}
+	&:nth-child(3) { inset-block-start: 80%; inset-inline-end: 8%; rotate: 4deg;}
+	&:nth-child(4) { inset-block-start: 88%; inset-inline-end: 20%; rotate: -14deg;}
+}
+
+
 
 /* MAIN CONTENT */
 main {
