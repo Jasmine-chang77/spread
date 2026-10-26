@@ -428,6 +428,7 @@ main {
 	color: var(--color-ac);
 	font-family: var(--font-display);
 	font-size: calc(var(--text-s)*1.1);
+	text-decoration: underline;
 	padding-block: calc(var(--space-s)/2);
 	padding-inline: var(--space-m);
 
@@ -442,6 +443,15 @@ main {
 		@media (width > 650px) {
 			display: block;
 		}
+	}
+
+	@media (hover: hover) {
+		text-decoration: none;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+
 	}
 }
 
