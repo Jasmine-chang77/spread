@@ -291,14 +291,11 @@ main {
 		h2 {
 			font-weight: 600;
 			text-transform: uppercase;
+			letter-spacing: 0.05rem;
 			margin-block-end: var(--space-s);
 
 			&::before {content: '/';}
 			&::after {content: '/';}
-
-			@media (width > 650px) {
-				text-transform: none;
-			}
 		}
 
 		p + p, blockquote + p {
@@ -374,12 +371,12 @@ main {
 				cursor: pointer;
 
 				&::after {
-					content: '▼';
+					content: '▶';
 					margin-inline-start: calc(var(--space-s) / 2);
 				}
 
 				[open] & {
-					&::after { content: '▲'; }
+					&::after { content: '▼'; }
 				}
 			}
 
@@ -428,7 +425,7 @@ main {
 	color: var(--color-ac);
 	font-family: var(--font-display);
 	font-size: calc(var(--text-s)*1.1);
-	text-decoration: underline;
+
 	padding-block: calc(var(--space-s)/2);
 	padding-inline: var(--space-m);
 
@@ -445,10 +442,16 @@ main {
 		}
 	}
 
+	a, button {
+		text-decoration: underline;
+	}
+
 	@media (hover: hover) {
-		text-decoration: none;
-		
-		&:hover {
+		a, button {
+			text-decoration: none;
+		}
+
+		a:hover, button:hover {
 			text-decoration: underline;
 		}
 
