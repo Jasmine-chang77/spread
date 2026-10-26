@@ -11,6 +11,7 @@
 	/* TEXT SIZE VARIABLES */
 	--text-s: 1rem;
 	--text-m: 1.3rem;
+	--title-size: clamp(calc(var(--text-s)*3.5), 13vw, calc(var(--text-s)*4));
 
 	/* SPACES VARIABLES */
 	--space-s: 1rem;
@@ -171,7 +172,7 @@ body > header {
 	overflow-x: clip;
 
 	p {
-		font-size: var(--text-s);
+		font-size: calc(var(--text-s)*0.8);
 		line-height: 1.8;
 		text-align: right;
 	}
@@ -180,10 +181,8 @@ body > header {
 .title-group {
 	position: relative;
 
-	font-size: clamp(calc(var(--text-s)*4), 1rem + 11vw, calc(var(--text-s)*4));
-
 	@media (width > 650px) {
-		font-size: clamp(calc(var(--text-s)*4), 1rem + 7vw, calc(var(--text-s)*8));
+		--title-size: clamp(calc(var(--text-s)*3.5), 9vw, calc(var(--text-s)*8));
 	}
 
 	h1 {
@@ -191,7 +190,7 @@ body > header {
 
 		text-transform: uppercase;
 		font-family: var(--font-display);
-		font-size: 1em;
+		font-size: var(--title-size);
 		/* clamp scales the title with the screen width, between a minimum and a maximum size. */
 		/* https://typography-interaction-2627.github.io/topic/responsive/#clamp */
 
@@ -211,19 +210,20 @@ body > header {
 	white-space: nowrap;
 
 	font-family: var(--font-display);
-	font-size: 0.16em;
-	padding-block: 0.3em;
-	padding-inline: 0.8em;
-	border-radius: 0.3em;
+	font-size: calc(var(--title-size)*0.2);
+	padding-block: calc(var(--space-s)*0.25);
+	padding-inline: calc(var(--space-s)*0.6);
+	border-radius: calc(var(--space-s)*0.25);
 
 	&:nth-child(odd) {
 		color: var(--color-pr);
-		border: 0.1em solid var(--color-pr);
+		border: 0.1rem solid var(--color-pr);
 		background-color: var(--color-bg);
 	}
 
 	&:nth-child(even) {
 		color: var(--color-ac);
+		border: 0.1rem solid var(--color-bg);
 		background-color: var(--color-text);
 		text-transform: uppercase;
 		font-weight: 700;
@@ -231,10 +231,10 @@ body > header {
 
 	/* We use % here, so they move with the title. */
 	/* https://typography-interaction-2627.github.io/topic/advanced-css/#okay-what-do-they-do */
-	&:nth-child(1) { inset-block-start: -14%; inset-inline-end: 12%; rotate: -12deg;}
-	&:nth-child(2) { inset-block-start: -6%; inset-inline-end: -6%; rotate: 8deg;}
-	&:nth-child(3) { inset-block-start: 80%; inset-inline-end: 8%; rotate: 4deg;}
-	&:nth-child(4) { inset-block-start: 88%; inset-inline-end: 20%; rotate: -14deg;}
+	&:nth-child(1) { inset-block-start: -22%; inset-inline-end: 16%; transform: rotate(-18deg);}
+	&:nth-child(2) { inset-block-start: -12%; inset-inline-end: 0%; transform: rotate(8deg);}
+	&:nth-child(3) { inset-block-start: 96%; inset-inline-end: 48%; transform: rotate(-10deg);}
+	&:nth-child(4) { inset-block-start: 82%; inset-inline-end: 68%; transform: rotate(4deg);}
 }
 
 
