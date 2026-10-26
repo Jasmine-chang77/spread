@@ -159,7 +159,7 @@ dialog {
 	}
 }
 
-/* HERO (Title + Author) */
+/* HERO (Title + Author + Tags) */
 body > header {
 	position: relative;
 	display: flex;
@@ -175,6 +175,10 @@ body > header {
 		font-size: calc(var(--text-s)*0.8);
 		line-height: 1.8;
 		text-align: right;
+
+		@media (width > 650px) {
+			font-size: var(--text-s);
+		}
 	}
 }
 
@@ -229,12 +233,31 @@ body > header {
 		font-weight: 700;
 	}
 
-	/* We use % here, so they move with the title. */
+	/* We use % so the tags are placed relative to the title group, not the screen, and move with the title when it resizes. */
 	/* https://typography-interaction-2627.github.io/topic/advanced-css/#okay-what-do-they-do */
-	&:nth-child(1) { inset-block-start: -22%; inset-inline-end: 16%; transform: rotate(-18deg);}
-	&:nth-child(2) { inset-block-start: -12%; inset-inline-end: 0%; transform: rotate(8deg);}
-	&:nth-child(3) { inset-block-start: 96%; inset-inline-end: 48%; transform: rotate(-10deg);}
-	&:nth-child(4) { inset-block-start: 82%; inset-inline-end: 68%; transform: rotate(4deg);}
+	&:nth-child(1) {
+		inset-block-start: -22%;
+		inset-inline-end: 16%;
+		transform: rotate(-18deg);
+	}
+
+	&:nth-child(2) {
+		inset-block-start: -12%;
+		inset-inline-end: 0%;
+		transform: rotate(8deg);
+	}
+
+	&:nth-child(3) {
+		inset-block-start: 96%;
+		inset-inline-end: 48%;
+		transform: rotate(-10deg);
+	}
+
+	&:nth-child(4) {
+		inset-block-start: 82%;
+		inset-inline-end: 68%;
+		transform: rotate(4deg);
+	}
 }
 
 
