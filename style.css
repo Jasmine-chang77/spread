@@ -164,7 +164,7 @@ body > header {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	min-block-size: calc(100svh - var(--space-s)*12);
+	min-block-size: calc(100svh - var(--space-s)*10.5);
 	/* We use svh because it means "small viewport height" the screen height when the mobile browser's address bar is showing. Using it instead of vh means the peek works on phones too, without the address bar hiding the copy. */
 
 	justify-content: center;
@@ -242,19 +242,19 @@ body > header {
 	}
 
 	&:nth-child(2) {
-		inset-block-start: -12%;
+		inset-block-start: -13%;
 		inset-inline-end: 0%;
 		transform: rotate(8deg);
 	}
 
 	&:nth-child(3) {
-		inset-block-start: 96%;
+		inset-block-start: 99%;
 		inset-inline-end: 48%;
 		transform: rotate(-10deg);
 	}
 
 	&:nth-child(4) {
-		inset-block-start: 82%;
+		inset-block-start: 85%;
 		inset-inline-end: 68%;
 		transform: rotate(4deg);
 	}
@@ -286,17 +286,19 @@ main {
 		section {
 			padding-block-end: var(--space-xl);
 			hyphens: auto;
+		}
 
-			last-of-type {
-				padding-block-end: var(--space-s);
-			}
+		.last-section {
+			padding-block-end: var(--space-s);
 		}
 
 		h2 {
 			font-weight: 900;
 			text-transform: uppercase;
 			letter-spacing: 0.05rem;
-			margin-block-end: var(--space-s);
+
+			margin-block-end: var(--space-m);
+			margin-inline-start: var(--space-m);
 
 			&::before {content: '/';}
 			&::after {content: '/';}
@@ -308,24 +310,30 @@ main {
 
 		a {
 			color: var(--color-sc);
+
+			@media (hover: hover) {
+				&:hover {
+					text-decoration: underline;
+				}
+			}
 		}
 
 		aside {
 			display: flex;
 			align-items: center;
 			gap: var(--space-m);
-			margin-block: var(--space-m);
+			margin-block: var(--space-l);
 
 			p {
 				flex: 1; /* Allows the element to grow and fill the remaining space in a flex container. */
 				font-style: italic;
-				font-size: var(--text-s);
+				font-size: var(--text-m);
 			}
 
 			&::before, &::after {
 				color: var(--color-pr);
 				font-family: var(--font-qmark);
-				font-size: calc(var(--text-s)*4);
+				font-size: calc(var(--text-s)*6);
 				line-height: 1;
 			}
 
@@ -373,6 +381,13 @@ main {
 
 			summary {
 				cursor: pointer;
+				transition: color 0.2s;
+
+				@media (hover: hover) {
+					&:hover {
+						color: var(--color-pr);
+					}
+				}
 
 				&::after {
 					content: '▸';
