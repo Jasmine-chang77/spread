@@ -286,6 +286,10 @@ main {
 		section {
 			padding-block-end: var(--space-xl);
 			hyphens: auto;
+
+			last-of-type {
+				padding-block-end: var(--space-s);
+			}
 		}
 
 		h2 {
@@ -393,11 +397,10 @@ main {
 		line-height: 1.8;
 		color: var(--color-footer);
 
-		padding-block: var(--space-m);
+		padding-block: var(--space-s);
 
 		& > :nth-child(2) {
 			padding-block-end: var(--space-s);
-			border-block-end: 0.1rem solid var(--color-footer);
 		}
 
 		& > :nth-child(3) {
@@ -519,7 +522,7 @@ main {
 		color: var(--color-sc);
 	}
 
-	li:not(first-child) {
+	li:not(:first-child) {
 		display: inline;
 	}
 
