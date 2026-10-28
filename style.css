@@ -308,6 +308,14 @@ main {
 			&::after {content: '/';}
 		}
 
+		mark {
+			background-color: var(--color-pr);
+			color: var(--color-ac);
+
+			padding-block: calc(var(--space-xs)/2);
+			padding-inline: var(--space-xs);
+		}
+
 		p + p, blockquote + p {
 			margin-block-start: var(--space-m);
 		}
@@ -315,6 +323,8 @@ main {
 		a {
 			color: var(--color-sc);
 			text-decoration: underline;
+
+			padding-inline: var(--space-xs);
 
 			@media (hover: hover) {
 				&:hover {
