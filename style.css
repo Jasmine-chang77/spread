@@ -629,7 +629,7 @@ main {
 
 	body {
 		padding-block: 0;
-		margin-inline: 0;
+		margin-inline: var(--space-l);
 	}
 
 	body > header {
@@ -682,9 +682,19 @@ main {
 		article a::after {
 			content: " (" attr(href) ")";
 		}
+
+		details {
+			/* On paper, nobody can click to open the appendix, so we always show its content. */
+			/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::details-content */
+			&::details-content {
+				content-visibility: visible;
+			}
+
+			summary::after {
+				content: none;
+			}
+		}
 	}
-
-
 
 	.bottom-bar {
 		display: none;
