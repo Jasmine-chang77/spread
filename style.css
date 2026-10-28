@@ -627,9 +627,18 @@ main {
 		--color-ac: white;
 	}
 
+	body {
+		padding-block: 0;
+		margin-inline: 0;
+	}
+
 	body > header {
 		min-block-size: 100vh;
 		break-after: page; /* the title as cover page */
+
+		.title-group {
+			margin-block-start: auto;
+		}
 	}
 
 	body > header > nav {
@@ -655,20 +664,27 @@ main {
 		}
 	}
 
-	h2 {
-		break-after: avoid; /* keep a chapter title with its first lines */
+	main {
+		max-inline-size: none;
+		margin-inline: 0;
+
+		h2 {
+			break-after: avoid; /* keep a chapter title with its first lines */
+		}
+
+		blockquote, aside, ol {
+			break-inside: avoid; /* don't split the expressive moments across pages */
+		}
+
+		/* On paper, links can't be clicked, so we print the URL after each link. */
+		/* attr() reads the href from the HTML, and ::after adds it as text. */
+		/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/attr */
+		article a::after {
+			content: " (" attr(href) ")";
+		}
 	}
 
-	blockquote, aside, ol {
-		break-inside: avoid; /* don't split the expressive moments across pages */
-	}
 
-	/* On paper, links can't be clicked, so we print the URL after each link. */
-	/* attr() reads the href from the HTML, and ::after adds it as text. */
-	/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/attr */
-	article a::after {
-		content: " (" attr(href) ")";
-	}
 
 	.bottom-bar {
 		display: none;
