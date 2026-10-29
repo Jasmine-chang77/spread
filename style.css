@@ -742,6 +742,7 @@ main {
 	main {
 		max-inline-size: none;
 		margin-inline: 0;
+		gap: 0;
 
 		article {
 			h2 { break-after: avoid; } /* keep a chapter title with its first lines */
@@ -753,12 +754,19 @@ main {
 			/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/attr */
 			a::after { content: " (" attr(href) ")"; }
 
+			.last-section {
+				padding-block-end: 0;
+				margin-block-end: 0;
+			}
+
 			section {
 				padding-block-end: 0;
-				margin-block-end: var(--space-s);
+				margin-block-end: var(--space-xl);
 			}
 
 			details {
+				break-inside: avoid;
+				padding-block: 0;
 				/* On paper, nobody can click to open the appendix, so we always show its content. */
 				/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::details-content */
 				&::details-content {
@@ -767,6 +775,9 @@ main {
 
 				summary::after { content: none; }
 			}
+		}
+		footer {
+			padding-block-start: var(--space-s);
 		}
 	}
 
