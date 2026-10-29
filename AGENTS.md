@@ -1,7 +1,5 @@
-<!-- This is my link to the chat with Claude -->
-https://claude.ai/share/f4058b6c-782e-40c6-9e74-3df58a9c3a79
-
-
+# LLM/AI
+[Our chat with Claude](https://claude.ai/share/f4058b6c-782e-40c6-9e74-3df58a9c3a79)
 
 
 <!--
